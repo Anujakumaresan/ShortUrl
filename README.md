@@ -23,8 +23,8 @@ Ensure PostgreSQL is running and create a database named `shorturl_db` (or your 
 3. Create a `.env` file in the `backend` directory with the following variables:
    ```env
    PORT=5000
-   DB_USER=postgres
-   DB_PASSWORD=your_password
+   DB_USER=anujakumaresan
+   DB_PASSWORD=anuja@2006
    DB_HOST=localhost
    DB_PORT=5432
    DB_NAME=shorturl_db
@@ -107,10 +107,10 @@ shorturl/
 - `DELETE /api/urls/:id` - Delete a specific URL
 
 ### Redirection
-- `GET /s/:alias` - Redirects to original URL and records click analytics
+- `GET /s/:short_id` - Redirects to original URL and records click analytics
 
 ### Analytics
-- `GET /api/analytics/:alias` - Get analytics data for a specific short URL
+- `GET /api/analytics/:short_id` - Get analytics data for a specific short URL
 
 ## Sample Analytics Data
 
@@ -130,8 +130,8 @@ When users click the generated short links, the system captures the following an
 
 ```mermaid
 graph TD
-    Client[Client Browser] -->|HTTP/REST| Frontend[React Frontend (Port 3000)]
-    Frontend -->|API Requests| Backend[Node.js / Express Backend (Port 5000)]
+    Client[Client Browser] -->|HTTP/REST| Frontend["React Frontend (Port 3000)"]
+    Frontend -->|API Requests| Backend["Node.js / Express Backend (Port 5000)"]
     Client -->|Short URL redirect /s/:id| Backend
     Backend -->|Read/Write| DB[(PostgreSQL)]
 ```
